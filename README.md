@@ -1,4 +1,4 @@
-# SSE-PT: Temporal Collaborative Ranking Via Personalized Transformer
+# SSE-PT: Sequential Recommendation Via Personalized Transformer
 We implement our code in Tensorflow and the code is tested under a server with 40-core Intel Xeon E5-2630 
 v4 @ 2.20GHz CPU, 256G RAM and Nvidia GTX 1080 GPUs (with TensorFlow 1.13 and Python 3).
 
@@ -7,28 +7,8 @@ The preprocessed datasets are in the `data` directory (`e.g. data/ml1m.txt`). Ea
 a `user id` and an `item id`, where both user id and item id are indexed from 1 consecutively. Each line represents one interaction between the user 
 and the item. For every user, their interactions were sorted by timestamp.
 
-## Papers
-Our paper is on [arxiv](https://arxiv.org/abs/1908.05435).
-One can cite:
-```
-@article{wu2019temporal,
-  title={Temporal Collaborative Ranking Via Personalized Transformer},
-  author={Wu, Liwei and Li, Shuqing and Hsieh, Cho-Jui and Sharpnack, James},
-  journal={arXiv preprint arXiv:1908.05435},
-  year={2019}
-}
-```
 
-It is worth noting that a new regualrization technique called SSE is used. One can refer to the paper below for more details:
-[Stochastic Shared Embeddings: Data-driven Regularization of Embedding Layers](https://arxiv.org/abs/1905.10630). The paper has been accepted to NeurIPS 2019. We will present the work at Vancouver, Canada. Another git repo is at https://github.com/wuliwei9278/SSE.
-```
-@article{wu2019stochastic,
-  title={Stochastic Shared Embeddings: Data-driven Regularization of Embedding Layers},
-  author={Wu, Liwei and Li, Shuqing and Hsieh, Cho-Jui and Sharpnack, James},
-  journal={arXiv preprint arXiv:1905.10630},
-  year={2019}
-}
-```
+
 
 ## Options
 The training of the SSE-PT model is handled by the main.py script that provides the following command line arguments.
