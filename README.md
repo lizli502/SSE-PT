@@ -49,4 +49,4 @@ The following is the plot of NDCG@10 versus training time (Seconds) for SASRec, 
 </p>
 
 ## Acknowledgements
-We based our codes on [SASRec](https://github.com/kang205/SASRec).
+We based our codes on [SASRec](https://github.com/kang205/SASRec). The main regularization method we used is [SEE](https://github.com/wuliwei9278/SSE).
