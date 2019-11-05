@@ -1,4 +1,4 @@
-# The HGN model for Sequential Recommendation
+# The HGN model for Sequential Recommendation (Modified its evaluation to be the same as SASRec)
 The implementation of the paper:
 
 *Chen Ma, Peng Kang, and Xue Liu, "**Hierarchical Gating Networks for Sequential Recommendation**", in the 25th ACM SIGKDD Conference on Knowledge Discovery and Data Mining (**KDD 2019**)* 
