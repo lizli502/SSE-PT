@@ -1,13 +1,44 @@
 # SSE-PT: Sequential Recommendation Via Personalized Transformer
 We implement our code in Tensorflow and the code is tested under a server with 40-core Intel Xeon E5-2630 
-v4 @ 2.20GHz CPU, 256G RAM and Nvidia GTX 1080 GPUs (with TensorFlow 1.13 and Python 3).
+v4 @ 2.20GHz CPU, 256G RAM and Nvidia GTX 1080 GPUs (with TensorFlow 1.13 and Python 3). The code is also hosted at https://github.com/wuliwei9278/SSE-PT.
 
 ## Datasets
 The preprocessed datasets are in the `data` directory (`e.g. data/ml1m.txt`). Each line of the `txt` format data contains
 a `user id` and an `item id`, where both user id and item id are indexed from 1 consecutively. Each line represents one interaction between the user 
 and the item. For every user, their interactions were sorted by timestamp.
 
+## Papers
+Our paper has been accepted to ACM Recommender Systems Conference 2020 for long paper and our pre-print version is on [arxiv](https://arxiv.org/abs/1908.05435) or our ICLR borderline-rejected version https://openreview.net/forum?id=HkeuD34KPH.
+One can cite one of below for now:
+```
+@article{wu2019temporal,
+  title={Temporal Collaborative Ranking Via Personalized Transformer},
+  author={Wu, Liwei and Li, Shuqing and Hsieh, Cho-Jui and Sharpnack, James},
+  journal={arXiv preprint arXiv:1908.05435},
+  year={2019}
+}
+```
+or
+```
+@misc{
+wu2020ssept,
+  title={{\{}SSE{\}}-{\{}PT{\}}: Sequential Recommendation Via Personalized Transformer},
+  author={Liwei Wu and Shuqing Li and Cho-Jui Hsieh and James Sharpnack},
+  year={2020},
+  url={https://openreview.net/forum?id=HkeuD34KPH}
+}
+```
 
+It is worth noting that a new regualrization technique called SSE is used. One can refer to the paper below for more details:
+[Stochastic Shared Embeddings: Data-driven Regularization of Embedding Layers](https://arxiv.org/abs/1905.10630). The paper has been accepted to NeurIPS 2019. We presented the work at Vancouver, Canada. Another git repo is at https://github.com/wuliwei9278/SSE.
+```
+@article{wu2019stochastic,
+  title={Stochastic Shared Embeddings: Data-driven Regularization of Embedding Layers},
+  author={Wu, Liwei and Li, Shuqing and Hsieh, Cho-Jui and Sharpnack, James},
+  journal={arXiv preprint arXiv:1905.10630},
+  year={2019}
+}
+```
 
 
 ## Options
