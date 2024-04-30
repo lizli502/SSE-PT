@@ -1,0 +1,18 @@
+numpy==1.25.2
+tensorboard==2.15.2
+tensorboard-data-server==0.7.2
+tensorflow @ https://storage.googleapis.com/colab-tf-builds-public-09h6ksrfwbb9g9xv/tensorflow-2.15.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl#sha256=a2ec79931350b378c1ef300ca836b52a55751acb71a433582508a07f0de57c42
+tensorflow-datasets==4.9.4
+tensorflow-estimator==2.15.0
+tensorflow-gcs-config==2.15.0
+tensorflow-hub==0.16.1
+tensorflow-io-gcs-filesystem==0.36.0
+tensorflow-metadata==1.14.0
+tensorflow-probability==0.23.0
+tensorstore==0.1.45
+pandas==2.0.3
+pandas-datareader==0.10.0
+pandas-gbq==0.19.2
+pandas-stubs==2.0.3.230814
+tf-slim==1.1.0
+tf_keras==2.15.1

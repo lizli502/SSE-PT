@@ -1,0 +1,17 @@
+batch_size,128
+dataset,ml1m
+dropout_rate,0.5
+gpu,0
+item_hidden_units,50
+k,10
+l2_emb,0.0
+lr,0.001
+maxlen,50
+num_blocks,2
+num_epochs,100
+num_heads,1
+print_freq,10
+threshold_item,1.0
+threshold_user,1.0
+train_dir,default
+user_hidden_units,50

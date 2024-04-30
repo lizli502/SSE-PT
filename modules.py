@@ -7,7 +7,9 @@ https://www.github.com/kyubyong/transformer
 '''
 
 from __future__ import print_function
-import tensorflow as tf
+#import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 import numpy as np
 
 
@@ -118,7 +120,7 @@ def embedding(inputs,
                                        dtype=tf.float32,
                                        shape=[vocab_size, num_units],
                                        #initializer=tf.contrib.layers.xavier_initializer(),
-                                       regularizer=tf.contrib.layers.l2_regularizer(l2_reg))
+                                       regularizer=tf.keras.regularizers.L2(l2_reg))
         if zero_pad:
             lookup_table = tf.concat((tf.zeros(shape=[1, num_units]),
                                       lookup_table[1:, :]), 0)

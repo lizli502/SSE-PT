@@ -7,6 +7,9 @@ from sampler import WarpSampler
 from model_v1 import Model
 #from tqdm import tqdm
 from util import *
+import warnings
+warnings.simplefilter("ignore", category=(UserWarning, FutureWarning))
+
 
 
 def str2bool(s):
@@ -54,14 +57,14 @@ for u in user_train:
     cc += len(user_train[u])
     max_len = max(max_len, len(user_train[u]))
 print("\nThere are {0} users {1} items \n".format(usernum, itemnum))
-print("Average sequence length: {0}\n".format(cc / len(user_train)))
+print("Average sequence length: {0:.2f}\n".format(cc / len(user_train)))
 print("Maximum length of sequence: {0}\n".format(max_len))
 
 f = open(os.path.join(args.dataset + '_' + args.train_dir, 'log.txt'), 'w')
-config = tf.ConfigProto()
+config = tf.compat.v1.ConfigProto()
 config.gpu_options.allow_growth = True
 config.allow_soft_placement = True
-sess = tf.Session(config=config)
+sess = tf.compat.v1.Session(config=config)
 
 sampler = WarpSampler(user_train, usernum, itemnum, 
             batch_size=args.batch_size, maxlen=args.maxlen,
@@ -69,12 +72,13 @@ sampler = WarpSampler(user_train, usernum, itemnum,
             threshold_item=args.threshold_item,
             n_workers=3)
 model = Model(usernum, itemnum, args)
-sess.run(tf.global_variables_initializer())
+sess.run(tf.compat.v1.global_variables_initializer())
 
 T = 0.0
 t_test = evaluate(model, dataset, args, sess)
 t_valid = evaluate_valid(model, dataset, args, sess)
-print("[0, 0.0, {0}, {1}, {2}, {3}],".format(t_valid[0], t_valid[1], t_test[0], t_test[1]))
+print("Epoch:    0 | Time:    0.0 | Val NDCG@{4}: {0:.4f}, HR@{4}: {1:.4f} | Test NDCG@{4}: {2:.4f}, HR@{4}: {3:.4f} |".format(
+    round(t_valid[0], 4), round(t_valid[1], 4), round(t_test[0], 4), round(t_test[1], 4), args.k))
 
 t0 = time.time()
 
@@ -100,9 +104,11 @@ for epoch in range(1, args.num_epochs + 1):
         t_test = evaluate(model, dataset, args, sess)
         t_valid = evaluate_valid(model, dataset, args, sess)
         #print ''
-        #print 'epoch:%d, time: %f(s), valid (NDCG@10: %.4f, HR@10: %.4f), test (NDCG@10: %.4f, HR@10: %.4f)' % (
+        #print 'epoch:%d, time: %f(s), valid (NDCG@k: %.4f, HR@k: %.4f), test (NDCG@k: %.4f, HR@k: %.4f)' % (
         #epoch, T, t_valid[0], t_valid[1], t_test[0], t_test[1])
-        print("[{0}, {1}, {2}, {3}, {4}, {5}],".format(epoch, T, t_valid[0], t_valid[1], t_test[0], t_test[1]))
+        print("Epoch: {0:>4} | Time: {1:>6.2f} | Val NDCG@{6}: {2:>6.4f}, HR@{6}: {3:.4f} | Test NDCG@{6}: {4:>6.4f}, HR@{6}: {5:.4f} |".format(
+            epoch, round(T, 2), round(t_valid[0], 4), round(t_valid[1], 4), round(t_test[0], 4), round(t_test[1], 4), args.k))
+
         #f.write(str(t_valid) + ' ' + str(t_test) + '\n')
         #f.flush()
         t0 = time.time()
